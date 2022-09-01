@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+</head>
+<body>
+<!-- Nav -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button type="button" class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="nav">
+    <ul class="navbar-nav">
+    </ul>
+    <form class="form-inline">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="About Titanic " />
+        <div class="input-group-append">
+          <button type="button" class="btn btn-danger">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+<!-- End Nav -->
+
+<!-- Jambotron / Card -->
+<div class="container m-1">
+  <div class="row">
+    <div class="col-lg-10" >
+      <div class="jumbotron bg-light bg-danger" >
+        <h1 class="display-4">Titanic</h1>
+
+        <hr class="my-4">
+        <p>
+          RMS Titanic was a British passenger liner, operated by the White Star Line, which sank in the North Atlantic Ocean
+          on 15 April 1912 after striking an iceberg during her maiden voyage from Southampton, UK, to New York City,
+          United States. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it the deadliest
+          sinking of a single ship up to that time. It remains the deadliest peacetime sinking of a superliner or cruise ship.
+          The disaster drew public attention, provided foundational material for the disaster film genre, and has inspired many
+          artistic works.
+        </p>
+        <h2> Check survived and dead persons </h2>
+        <form action="{{url_for('predict')}}" method="post">
+
+          <label class="control-label col-sm-2" for="pwd">The Sex :</label>
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="male">
+            <option value=1>1</option>
+            <option value=0>0</option>
+          </select>
+          <br>
+          <label class="control-label col-sm-2" for="pwd">The Pclass:</label>
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="Pclass">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+          </select>
+          <br>
+          <label class="control-label col-sm-2" for="pwd">The Age:</label>
+          <input type="number" name="Age"  placeholder="Age " required="required">
+          <br>
+          <label class="control-label col-sm-2" for="pwd">The Fare :</label>
+          <input type="number" name="Fare" placeholder="Fare" required="required">
+          <br>
+          <button type="submit" class="btn btn-danger"> Check </button>
+
+        </form>
+        <br>
+
+        {% if prediction == 0 %}
+          <h3> This person is dead </h3>
+        {% endif %}
+
+        {% if prediction == 1 %}
+          <h3> This person is survived </h3>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="col-lg-2" >
+      <div class="card bg-danger  text-white  " style="width: 20rem;" >
+        <img src="static/photos/titanic2.jpg" class="card-img-top" alt="..." width="250" height="250">
+        <div class="card-body card-body-danger">
+          <h4 class="card-title">Titanic</h4>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</div>
+<!-- End Jambotron / Card -->
+
+<!-- slide -->
+
+<div class="container">
+  <div class="text-center m-5">
+
+    <a href="https://en.wikipedia.org/wiki/Titanic" class="stretched-link text-danger">
+      <h3>Learn more about Titanic </h3>
+    </a>
+  </div>
+</div>
+
+<!-- footer -->
+
+<div class="card text-center">
+  <div class="card-header">
+  </div>
+
+  <div class="card-footer text-muted">
+  </div>
+</div>
+<!-- end footer -->
+
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/jquery-3.6.0.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+</body>
+</html>
